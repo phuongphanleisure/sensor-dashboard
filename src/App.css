@@ -1,0 +1,35 @@
+/* Layout wrapper */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+/* 4 plots per row with spacing */
+.plots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+  gap: 36px;                 /* ← was 24; increase spacing */
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 32px;
+  align-items: stretch;
+}
+
+/* if your SensorPlot root is a card/div, this makes it breathe a bit */
+.plots-grid > * {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;             /* optional: inner breathing room */
+  box-sizing: border-box;
+}
+
+
+/* responsive fallbacks */
+@media (max-width: 1400px) {
+  .plots-grid { grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+}
+@media (max-width: 700px) {
+  .plots-grid { grid-template-columns: 1fr; }
+}
